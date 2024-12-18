@@ -58,10 +58,13 @@ def travel():
         base()
     if type2 == 2:
         player_inventory.value("location", 2)
+        base()
     if type2 == 3:
         player_inventory.value("location", 3)
+        base()
     if type2 == 4:
         player_inventory.value("location", 4)
+        base()
 
 
 
