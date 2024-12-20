@@ -1,7 +1,6 @@
-import main
 # 2 = teli, 1 = félig, 0 = üres
-fuel: int = main.player_inventory.get_value("fuel")
-location: int = main.player_inventory.get_value("location") # 0, 1, 2, 3, 4
+fuel: int = 0
+location: int = 0 # 0, 1, 2, 3, 4
 # az "űrt" minding "_____"-el jelöljük, vagyis 5*_
 map: str = ["Thorodin", "Ydalir", "Vidar", "_____", "Folkvang"]
 
@@ -25,12 +24,11 @@ def status():
 def printmap():
     print(f"map: {map}")
 
-def travel(destination:str):
-    global location
-    global fuel
+def travel(destination:str, location:str, fuel:int):
+    map: str = ["Thorodin", "Ydalir", "Vidar", "_____", "Folkvang"]
     if(destination in map):
         fuelconsumption:int = abs(location-map.index(destination))
-        if(fuelconsumption > fuel):
+        if fuelconsumption > fuel:
             print("you dont have enough fuel")
         else:
             fuel = fuel - fuelconsumption

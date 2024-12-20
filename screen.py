@@ -31,7 +31,7 @@ class Player_Inventory:
         self.resources[resource] -= amount
         return self.resources[resource]
 
-    def value(self, resource, value=1):
+    def setvalue(self, resource, value=1):
         """Mennyiség csökkentése."""
         self.resources[resource] = value
         return self.resources[resource]
@@ -59,7 +59,7 @@ def infopanel_1(cargo, credits, fuel):
     print(f"""
 ╔══════════════╦═══════════════╗                What would you like to do here?
 ║ Fuel         ║ {fuel_drawer(fuel)}  ║                1. Inventory
-╠══════════════╬═══════════════╣                2. Learn about the Place
+╠══════════════╬═══════════════╣                2. Trading, Buying Fuel
 ║ Cargo        ║ {print_corrector(cargo)}            ║                3. Travel to somewhere
 ╠══════════════╬═══════════════╣                4. Other
 ║ Credits      ║ {print_corrector(credits)}            ║
@@ -77,12 +77,16 @@ def infopanel_2(cargo, credits, docking_unit, translator, container):
     print(f"""
 ╔══════════════╦═══════════════╗ 
 ┌──────────────┬───────────────┐
-│ cargo        │           {print_corrector(cargo)} │
-│ credits      │           {print_corrector(credits)} │
-│ docking_unit │           {print_corrector(docking_unit)} │
-│ translator   │           {print_corrector(translator)} │
-│ container    │           {print_corrector(container)} │
+│ cargo        │           {print_corrector(cargo)}  │
+│ credits      │           {print_corrector(credits)}  │
+│ docking_unit │           {print_corrector(docking_unit)}  │
+│ translator   │           {print_corrector(translator)}  │
+│ container    │           {print_corrector(container)}  │
 └──────────────┴───────────────┘          
 """)
 
+
+def wait():
+    sleep(1)
+    input("> Type something to continue")
 
