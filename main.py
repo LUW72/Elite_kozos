@@ -1,6 +1,7 @@
 import screen
 import art
 import sell
+import opening
 
 from screen import Player_Inventory
 from time import sleep
@@ -9,6 +10,11 @@ player_inventory = Player_Inventory(cargo=0, fuel=1,
                                     credits=20, docking_unit=0,
                                     translator=0, container=3,
                                     location=0)
+
+
+opening.op_scr()
+
+
 def base():
 
     screen.clear_screen()
