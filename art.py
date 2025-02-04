@@ -1,8 +1,11 @@
 from time import sleep
+import screen
+from travel_logic import Planet_travel
+import os
 
 def location_calc(location):
     if location == 0:
-        return "Cobra   "
+        return "In Space"
     if location == 1:
         return "Thorodin"
     if location == 2:
@@ -17,6 +20,7 @@ def header(location:str):
 ┌────────────────────────────────────────────┬────────────────────────────────────┐
 │ Your ship's location                       │                          {location}  │   
 └────────────────────────────────────────────┴────────────────────────────────────┘""")
+
 
 
 

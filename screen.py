@@ -21,6 +21,7 @@ class Player_Inventory:
             "location":location
         }
 
+
     def increase(self, resource, amount=1):
         """Mennyiség növelése"""
         self.resources[resource] += amount
@@ -32,7 +33,7 @@ class Player_Inventory:
         return self.resources[resource]
 
     def setvalue(self, resource, value=1):
-        """Mennyiség csökkentése."""
+        """Mennyiség beállítása."""
         self.resources[resource] = value
         return self.resources[resource]
 
@@ -41,11 +42,30 @@ class Player_Inventory:
         return self.resources[resource]
 
 
+class Player_Values:
+    def __init__(self, chance_of_success, num_of_trip):
+        self.values = {
+            "num_of_trip": 0,
+            "chance_of_success" : 70
+        }
+
+    def setvalue(self, change, value):
+        """Mennyiség beállítása."""
+        self.values[change] = value
+        return self.values[change]
+
+    def get_value(self, change):
+        """ Kiiras """
+        return self.values[change]
+    
+
 def fuel_drawer(fuel: int) -> str:
     if fuel == 2:
         return "||||||||||||"
     elif fuel == 1:
         return "|||||||     "
+    elif fuel == 0:
+        return " NO TRAVEL  "
     else:
         return "  NO FUEL   "
 
