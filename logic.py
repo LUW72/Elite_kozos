@@ -6,7 +6,7 @@ map: str = ["Thorodin", "Ydalir", "Vidar", "_____", "Folkvang"]
 
 def destination(dest):
     if dest == 0:
-        print("Cobra")
+        print("In Space")
     if dest == 1:
         print("Thorodin")
     if dest == 2:
