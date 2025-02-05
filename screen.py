@@ -92,13 +92,14 @@ def infopanel_1(cargo, credits, fuel):
     print("idk: ")
     print("----------------------------------------------------------")
     """
-def infopanel_2(cargo, credits, docking_unit, translator, container):
+def infopanel_2(cargo, credits, fuel, docking_unit, translator, container):
 
     print(f"""
 ╔══════════════╦═══════════════╗ 
 ┌──────────────┬───────────────┐
 │ cargo        │           {print_corrector(cargo)}  │
 │ credits      │           {print_corrector(credits)}  │
+│ fuel         │           {print_corrector(fuel)}  │
 │ docking_unit │           {print_corrector(docking_unit)}  │
 │ translator   │           {print_corrector(translator)}  │
 │ container    │           {print_corrector(container)}  │

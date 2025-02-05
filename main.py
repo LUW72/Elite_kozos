@@ -35,7 +35,7 @@ def base():
 
     if type == 1:
         screen.clear_screen()
-        screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"), player_inventory.get_value("docking_unit"), player_inventory.get_value("translator"), player_inventory.get_value("container"))
+        screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"),player_inventory.get_value("fuel"), player_inventory.get_value("docking_unit"), player_inventory.get_value("translator"), player_inventory.get_value("container"))
         screen.wait()
         base()
     if type == 2:
@@ -46,22 +46,53 @@ def base():
 def info():
     screen.clear_screen()
     place = player_inventory.get_value("location")
-    print(f"Yout current planet: {art.location_calc(place)}\n")
-    cargo = sell.buying_cargo(player_inventory.get_value("credits"), player_inventory.get_value("cargo"), player_inventory.get_value("container"))
-    player_inventory.setvalue("cargo", cargo[0])
-    player_inventory.setvalue("credits", cargo[1])
-    screen.wait()
-    print("")
-    fuel = sell.buying_fuel(player_inventory.get_value("credits"), player_inventory.get_value("fuel"))
-    player_inventory.setvalue("credits", fuel[0])
-    player_inventory.setvalue("fuel", fuel[1])
-    screen.wait()
-    print("")
-    eq = sell.buying_equipment(player_inventory.get_value("credits"), player_inventory.get_value("docking_unit"), player_inventory.get_value("translator"), player_inventory.get_value("container"))
-    player_inventory.setvalue("credits", eq[0])
-    player_inventory.setvalue("docking_unit", eq[1])
-    player_inventory.setvalue("translator", eq[2])
-    player_inventory.setvalue("container", eq[3])
+    screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"),
+                       player_inventory.get_value("fuel"), player_inventory.get_value("docking_unit"),
+                       player_inventory.get_value("translator"), player_inventory.get_value("container"))
+    print(f"Your current planet: {art.location_calc(place)}\n")
+    if place == 0:
+        print("You cannot trade in space. Please travel to a planet first.")
+    else:
+        buy = int(input(f"> What would you like to buy?\n\t"
+                        f"1. Cargo\n\t"
+                        f"2. Fuel\n\t"
+                        f"3. Equipment\n\t"
+                        f"4. Go back\n"))
+        while not 0 < buy < 5:
+            buy = int(input("> INVALID! What do you choose? (pick a number)"))
+        while buy != 4:
+            if buy == 1:
+                cargo = sell.buying_cargo(player_inventory.get_value("credits"), player_inventory.get_value("cargo"), player_inventory.get_value("container"))
+                player_inventory.setvalue("cargo", cargo[0])
+                player_inventory.setvalue("credits", cargo[1])
+                screen.wait()
+                screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"),
+                               player_inventory.get_value("fuel"), player_inventory.get_value("docking_unit"),
+                               player_inventory.get_value("translator"), player_inventory.get_value("container"))
+            if buy == 2:
+                print("")
+                fuel = sell.buying_fuel(player_inventory.get_value("credits"), player_inventory.get_value("fuel"))
+                player_inventory.setvalue("credits", fuel[0])
+                player_inventory.setvalue("fuel", fuel[1])
+                screen.wait()
+                screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"),
+                                   player_inventory.get_value("fuel"), player_inventory.get_value("docking_unit"),
+                                   player_inventory.get_value("translator"), player_inventory.get_value("container"))
+            if buy == 3:
+                print("")
+                eq = sell.buying_equipment(player_inventory.get_value("credits"), player_inventory.get_value("docking_unit"), player_inventory.get_value("translator"), player_inventory.get_value("container"))
+                player_inventory.setvalue("credits", eq[0])
+                player_inventory.setvalue("docking_unit", eq[1])
+                player_inventory.setvalue("translator", eq[2])
+                player_inventory.setvalue("container", eq[3])
+                screen.infopanel_2(player_inventory.get_value("cargo"), player_inventory.get_value("credits"),
+                                   player_inventory.get_value("fuel"), player_inventory.get_value("docking_unit"),
+                                   player_inventory.get_value("translator"), player_inventory.get_value("container"))
+            buy = int(input(f"> What would you like to buy?\n\t"
+                            f"1. Cargo\n\t"
+                            f"2. Fuel\n\t"
+                            f"3. Equipment\n\t"
+                            f"4. Go back\n"))
     screen.wait()
     base()
 
