@@ -92,7 +92,7 @@ def info():
                             f"1. Cargo\n\t"
                             f"2. Fuel\n\t"
                             f"3. Equipment\n\t"
-                            f"4. Go back\n"))
+                            f"4. Go back \n"))
     screen.wait()
     base()
 
